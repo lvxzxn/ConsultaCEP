@@ -28,11 +28,14 @@ function consultar() {
       .then(data => {
         // verifica se a consulta retornou um endereço válido
         if (data.erro) {
-          console.log(JSON.stringify({
-            status: 'erro',
-            mensagem: 'CEP não encontrado.'
-          }))
+          // pega a div do erro e remove o hidden para aparecer o erro
+          const erroDiv = document.querySelector('.erro');
+          erroDiv.classList.remove('hidden');
         } else {
+          // verifica se o classList da div não contém o hidden, se não tiver, ele adiciona para o próximo resultado
+          const erroDiv = document.querySelector('.erro');
+          if (!erroDiv.classList.contains('hidden'))
+            erroDiv.classList.add('hidden');
           // remove o hidden da div para mostrar o resultado
           const resultadoDiv = document.querySelector('.resultado');
           resultadoDiv.classList.remove('hidden');
