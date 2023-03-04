@@ -10,7 +10,7 @@ cepInput.addEventListener("keyup", (event) => {
   let cep = event.target.value.replace(/\D/g, "");
 
   // adiciona a máscara de CEP
-  cep = cep.replace(/^(\d{2})(\d{3})(\d{3})/, "$1.$2-$3");
+  cep = cep.replace(/^(\d{5})(\d{3})/, '$1-$2');
 
   // atualiza o valor do input
   event.target.value = cep;
